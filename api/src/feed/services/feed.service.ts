@@ -19,7 +19,14 @@ export class FeedService {
   findAllPosts(): Observable<FeedPost[]> {
     return from(this.feedPostRepository.find());
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  findPosts(take: number = 10, skip: number = 0): Observable<FeedPost[]> {
+    return from(
+      this.feedPostRepository.findAndCount({ take, skip }).then(([posts]) => {
+        return <FeedPost[]>posts;
+      }),
+    );
+  }
   updatePost(id: number, feedPost: FeedPost): Observable<UpdateResult> {
     return from(this.feedPostRepository.update(id, feedPost));
   }
