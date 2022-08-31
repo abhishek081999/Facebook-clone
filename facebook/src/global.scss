@@ -24,3 +24,38 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.my-custom-class2 {
+    --width: 552px;
+    --height: 400px;
+    margin-top: -400px;
+    ion-grid {
+        margin:0;
+        padding-bottom: 0;
+    }
+    ion-textarea {
+     padding-top: 0;
+    }
+}
+
+.my-custom-class .popover-content{
+    width:300px;
+    margin-top: 16px;
+    --box-shadow:none;
+    --background: none;
+}
+
+.item-divider {
+    border-bottom: 1px slid var(--ion-color-light-tint);
+}
+
+ion-button {
+    text-transform: initial;
+}
+
+ion-button {
+    ion-text {
+        margin-left: 8px;
+    }
+}
