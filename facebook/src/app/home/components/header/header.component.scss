@@ -1,11 +1,15 @@
 .toolbar-wrapper {
     display: flex;
-    max-width: 1128px;
+    max-width: 1200px;
     margin: auto;
   }
   
   .facebook-logo {
-    font-size: 40px;
+    font-size: 45px;
+  }
+  .facebook-text {
+    font-size: 25px;
+    font-weight: 700;
   }
   
   ion-col div,
