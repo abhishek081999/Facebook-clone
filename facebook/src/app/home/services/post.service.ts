@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -10,6 +11,7 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getSelectedPosts(params) {
-    return this.http.get<Post[]>('http://localhost:3000/api/feed' + params)
+    return this.http.get<Post[]>(
+      `${environment.baseApiUrl}/feed${params}`)
   }
 }
