@@ -1,6 +1,11 @@
-/* eslint-disable prettier/prettier */
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserEntity } from '../../auth/models/user.entity';
 @Entity('feed_post')
 export class FeedPostEntity {
   @PrimaryGeneratedColumn()
@@ -11,4 +16,8 @@ export class FeedPostEntity {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @ManyToOne(() => UserEntity, (userEntity) => userEntity.feedPosts)
+  author: UserEntity;
 }
+
