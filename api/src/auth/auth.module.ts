@@ -8,6 +8,7 @@ import { UserEntity } from './models/user.entity';
 import { JwtGuard } from './guards/jwt.guard';
 import { JwtStrategy } from './guards/jwt.strategy';
 import { RolesGuard } from './guards/roles.guard';
+import { IsCreatorGuard } from './guards/is-creator.guard';
 
 @Module({
   imports: [
@@ -21,5 +22,6 @@ import { RolesGuard } from './guards/roles.guard';
   ],
   providers: [AuthService, JwtGuard, JwtStrategy, RolesGuard],
   controllers: [AuthController],
+  exports: [AuthService],
 })
 export class AuthModule {}

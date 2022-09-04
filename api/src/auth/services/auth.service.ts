@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { from, map, Observable, switchMap } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../models/user.entity';
 import { User } from '../models/user.interface';
@@ -68,6 +69,16 @@ export class AuthService {
           // create JWT - credentials
           return from(this.jwtService.signAsync({ user }));
         }
+      }),
+    );
+  }
+  findUserById(id: number): Observable<User> {
+    return from(
+      this.userRepository.findOne({ where: { id }, relations: ['feedPosts'] }),
+    ).pipe(
+      map((user: User) => {
+        delete user.password;
+        return user;
       }),
     );
   }
